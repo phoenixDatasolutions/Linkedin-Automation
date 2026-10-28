@@ -1,0 +1,29 @@
+# secrets and private state: never commit these
+.env
+.env.*
+*.env
+token.json
+usage.json
+stats-cache.json
+queue/
+secretscan-extra.txt
+*.key
+*.pem
+id_*
+*_ed25519
+*.log
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# editor / os
+.DS_Store
+.idea/
+.vscode/

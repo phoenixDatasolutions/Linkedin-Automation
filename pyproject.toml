@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-automation"
+version = "0.1.0"
+description = "Official-API LinkedIn automation for Claude: set up credentials, write, check, approve and publish posts, and read your numbers. No scraping, no dependencies."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Smit Chandarana" }]
+keywords = ["linkedin", "linkedin-api", "claude", "claude-code", "skills", "automation", "oauth"]
+dependencies = []
+
+[project.scripts]
+li-auth = "linkedin_automation.auth:main"
+li-post = "linkedin_automation.post:main"
+li-stats = "linkedin_automation.stats:main"
+li-schedule = "linkedin_automation.schedule:main"
+li-lint = "linkedin_automation.lint:main"
+li-secrets-scan = "linkedin_automation.secretscan:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
