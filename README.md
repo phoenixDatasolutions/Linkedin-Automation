@@ -32,6 +32,11 @@
   <a href="ROADMAP.md">Roadmap</a>
 </p>
 
+<p align="center">
+  <img src="docs/media/posting-line.gif" alt="A 24-second animation: a draft is checked, waits at a gate, and only moves on when a person turns the key" width="520"><br>
+  <sub><b>Nothing posts without your yes.</b> 24 seconds: draft, check, your approval, publish. <a href="docs/media/posting-line.mp4">Watch the MP4</a>.</sub>
+</p>
+
 ---
 
 ## Why this exists
@@ -216,6 +221,8 @@ This project was inspired by two excellent MIT-licensed LinkedIn skill collectio
 - [sergebulaev/linkedin-skills](https://github.com/sergebulaev/linkedin-skills)
 
 The writing skills here are original work, but the idea of voice calibration and an anti-AI checklist owes a lot to them. Go star them too. LinkedIn API facts come from Microsoft Learn's public LinkedIn documentation (https://learn.microsoft.com/en-us/linkedin/), summarised in our own words with a source link in every file.
+
+The animation above was made with the [Anatomy](https://github.com/wheresryan22/anatomy) Claude skill by Ryan (MIT), which builds an idea as a working isometric machine.
 
 *Not affiliated with, endorsed by, or sponsored by LinkedIn or Microsoft. LinkedIn is a trademark of LinkedIn Corporation.*
 
