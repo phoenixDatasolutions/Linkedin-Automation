@@ -1,0 +1,28 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests
+      - name: Install the package
+        run: pip install .
+      - name: Commands start
+        run: |
+          li-auth --help > /dev/null
+          li-post --help > /dev/null
+          li-lint "A short test post about reports that took nine hours and now take forty minutes."
+          li-stats --help > /dev/null
+          li-schedule --help > /dev/null
+      - name: Secret scan (files)
+        run: li-secrets-scan
+      - name: Secret scan (history)
+        run: li-secrets-scan --history

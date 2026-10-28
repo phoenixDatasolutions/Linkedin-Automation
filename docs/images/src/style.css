@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--blue:#1D50B3;--sky:#5585E3;--cyan:#6ACEE2;--plum:#934386;--ink:#0F172A;--mut:#475569;--line:#E2E8F0;--bg:#F6F8FC;--ok:#16A34A;--warn:#F59E0B;--bad:#DC2626}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#fff}
+#canvas{position:relative;overflow:hidden}
+.title{font-weight:800;letter-spacing:-.02em}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:22px;box-shadow:0 10px 30px rgba(29,80,179,.08)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:20px}
+.num{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--plum))}
+.ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(29,80,179,.12),rgba(147,67,134,.12))}
+.ico svg{width:32px;height:32px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+code,.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}

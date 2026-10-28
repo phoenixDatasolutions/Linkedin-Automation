@@ -1,0 +1,22 @@
+{
+  "name": "linkedin-automation",
+  "version": "0.1.0",
+  "description": "Official-API LinkedIn automation for Claude: guided API setup, post writing in your voice, a safety check, approval-gated publishing and scheduling, analytics within the daily limit, and a complete LinkedIn API knowledge base.",
+  "author": {
+    "name": "Smit Chandarana",
+    "url": "https://github.com/phoenixDatasolutions"
+  },
+  "homepage": "https://github.com/phoenixDatasolutions/Linkedin-Automation",
+  "repository": "https://github.com/phoenixDatasolutions/Linkedin-Automation",
+  "license": "MIT",
+  "keywords": [
+    "linkedin",
+    "linkedin-api",
+    "automation",
+    "oauth",
+    "social-media",
+    "content",
+    "skills"
+  ],
+  "icon": ".claude-plugin/icon.png"
+}

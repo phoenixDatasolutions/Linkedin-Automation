@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><style>
+#canvas{background:linear-gradient(180deg,#F6F8FC,#EAF0FB)}
+.tt{font-size:46px;padding:40px 60px 0}.ts{font-size:23px;color:var(--mut);padding:8px 60px 0}
+.box{margin:26px 60px 0;padding:24px 30px}
+.bar{margin:14px 0}.bl b{font-size:25px;font-weight:800;margin-right:12px}.bl span{font-size:18px;color:var(--mut)}
+.track{margin-top:10px;height:52px;border-radius:14px;background:#EEF2FA;position:relative;overflow:hidden}.fill{height:100%;border-radius:14px}
+.track em{position:absolute;left:18px;top:0;line-height:52px;font-style:normal;font-weight:700;font-size:20px;color:#fff}
+.legend{display:flex;gap:26px;margin-top:10px;font-size:17px;color:var(--mut)}.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:8px;vertical-align:-1px}.legend .mono{margin-left:auto;color:var(--blue);font-weight:700}
+.tips{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:20px 60px}.tip{padding:16px 18px;font-size:19px;color:var(--mut)}.tip b{display:block;font-size:23px;color:var(--ink);margin-bottom:4px}
+</style></head>
+<body><div id="canvas" style="width:1600px;height:600px">
+<div class="tt title">LinkedIn gives you 100 calls a day. Spend them well.</div>
+<div class="ts">The analytics API answers <b>one post and one metric per call</b> (no batching). Limits reset at midnight UTC.</div>
+<div class="card box"><div class="bar"><div class="bl"><b>Naive refresh</b><span>refresh every post, all metrics, several times a day</span></div><div class="track"><div class="fill" style="width:100%;background:#DC2626"></div><em>25 posts x 3 metrics = 75 calls per refresh: the day is gone after one</em></div></div><div class="bar"><div class="bl"><b>This toolkit</b><span>new posts often, old posts rarely, cached 6 h, capped at 90</span></div><div class="track"><div class="fill" style="width:28%;background:#16A34A"></div><em>about 28 calls: room to spare</em></div></div>
+<div class="legend"><span><i style="background:#DC2626"></i>over the limit</span><span><i style="background:#16A34A"></i>within it</span><span class="mono">li-stats budget</span></div></div>
+<div class="tips"><div class="card tip"><b>0-7 days old</b>refresh often</div><div class="card tip"><b>8-30 days old</b>once a day</div><div class="card tip"><b>older</b>weekly or never</div><div class="card tip"><b>Trends</b>one call for ALL posts: li-stats me</div></div></div></body></html>

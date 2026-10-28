@@ -1,0 +1,15 @@
+{
+  "name": "phoenix-linkedin",
+  "owner": { "name": "Smit Chandarana" },
+  "metadata": { "description": "LinkedIn automation skills for Claude, built on the official LinkedIn API." },
+  "plugins": [
+    {
+      "name": "linkedin-automation",
+      "source": "./",
+      "description": "Guided LinkedIn API setup, writing in your voice, post checks, approval-gated publishing and scheduling, analytics, and a full LinkedIn API knowledge base.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": ["linkedin", "automation", "api", "oauth"]
+    }
+  ]
+}

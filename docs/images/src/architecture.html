@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><style>
+#canvas{background:linear-gradient(180deg,#fff,#F1F5FD)}
+.tt{font-size:52px;padding:44px 60px 0}
+.row{display:flex;align-items:stretch;gap:14px;padding:30px 60px 0}
+.col{flex:1;padding:26px 26px 22px}
+.col h3{font-size:30px;font-weight:800;margin:14px 0 4px}.col p{color:var(--mut);font-size:19px;margin-bottom:12px}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:7px}.col li{font-size:20px;font-weight:600;padding:7px 12px;border-radius:10px;background:#F1F5FD}
+.b li{background:#EFE3EC}.c li{background:#E2F6FB}
+.note{margin-top:14px;font-size:17px;color:var(--plum);font-weight:700}
+.arr{display:flex;flex-direction:column;align-items:center;justify-content:center;width:90px;color:var(--mut);font-weight:700;font-size:18px}
+.ico2{width:56px;height:56px}.ico2 svg{width:46px;height:46px;stroke:var(--blue);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vault{margin:26px 60px 0;padding:18px 26px;display:flex;align-items:center;gap:20px;background:linear-gradient(90deg,#EAF7EE,#F4FBF6);border-color:#BDE6C9}
+.vault b{display:block;font-size:24px}.vault span{font-size:18px;color:var(--mut);line-height:1.4}
+</style></head>
+<body><div id="canvas" style="width:1600px;height:900px">
+<div class="tt title">How the pieces fit</div>
+<div class="row">
+  <div class="col card a"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Claude</h3><p>Claude Code, Claude Desktop or claude.ai</p>
+    <ul><li>linkedin-api-setup</li><li>linkedin-writer</li><li>linkedin-post-check</li><li>linkedin-publisher</li><li>linkedin-comments</li><li>linkedin-planner</li><li>linkedin-analytics</li><li>linkedin-api (knowledge)</li></ul></div>
+  <div class="arr"><div class="ico2"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><span>runs</span></div>
+  <div class="col card b"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div><h3>5 small commands</h3><p>Python, no dependencies</p>
+    <ul class="mono"><li>li-auth</li><li>li-post</li><li>li-lint</li><li>li-stats</li><li>li-schedule</li></ul>
+    <div class="note">Dry run by default.<br>Counts every API call.</div></div>
+  <div class="arr"><div class="ico2"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><span>HTTPS</span></div>
+  <div class="col card c"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div><h3>LinkedIn official API</h3><p>api.linkedin.com / OAuth 2.0</p>
+    <ul><li>Posts &amp; media</li><li>Comments &amp; reactions</li><li>Post analytics</li><li>Sign in (OpenID)</li></ul>
+    <div class="note">No scraping. No browser automation.</div></div>
+</div>
+<div class="vault card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div><b>Your computer only</b><span>~/.config/linkedin-automation/  ·  .env (client ID + secret) and token.json, both owner-only (0600). Never in the repository, never in chat, never printed.</span></div></div></div></body></html>
