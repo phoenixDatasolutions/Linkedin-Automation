@@ -46,7 +46,7 @@ IMAGES["hero"] = (1600, 820, page(1600, 820, f'''
   <div class="kicker">OPEN SOURCE  ·  MIT  ·  OFFICIAL LINKEDIN API</div>
   <div class="h1 title">LinkedIn<br>Automation<br><span>for Claude</span></div>
   <p class="sub">Connect Claude to LinkedIn in 15 minutes. Write posts that sound like you, check them, approve them, publish and measure. No scraping. No stored passwords. Nothing posts without your yes.</p>
-  <div class="chips"><span class="chip c1">8 Claude skills</span><span class="chip c2">5 commands</span><span class="chip c3">0 dependencies</span><span class="chip c4">44 tests</span></div>
+  <div class="chips"><span class="chip c1">8 Claude skills</span><span class="chip c2">5 commands</span><span class="chip c3">0 dependencies</span><span class="chip c4">45 tests</span></div>
 </div>
 <div class="right card">
   <div class="rt">The loop</div>
@@ -207,6 +207,53 @@ IMAGES["icon"] = (1024, 1024, page(1024, 1024, '''
 '''))
 
 
+# ---------------------------------------------------------------- real terminal output (captured from the actual commands)
+import html as _html
+def terminal(title, name, rows_h):
+    raw = (SRC / "demo" / f"{name}.txt").read_text().rstrip("\n")
+    lines = []
+    for l in raw.split("\n"):
+        e = _html.escape(l)
+        if l.startswith("$ "):
+            e = f'<span class="p">$</span> <span class="c">{e[2:]}</span>'
+        elif l.strip().startswith("WARNING"):
+            e = e.replace("WARNING:", '<span class="w">WARNING</span>')
+        elif l.strip().startswith("ERROR"):
+            e = e.replace("ERROR:", '<span class="e">ERROR</span>')
+        elif "Clean. Nothing" in l or l.startswith("OK "):
+            e = f'<span class="g">{e}</span>'
+        elif l.startswith("MISSING") or l.startswith("none"):
+            e = f'<span class="w">{e}</span>'
+        elif l.startswith("Post check"):
+            e = f'<span class="h">{e}</span>'
+        lines.append(e)
+    body = "<br>".join(lines)
+    return (1400, rows_h, page(1400, rows_h, f'''<div class="win"><div class="bar"><i></i><i></i><i></i><span>{title}</span></div><pre>{body}</pre></div>''', '''
+#canvas{background:linear-gradient(135deg,#1D50B3,#934386);padding:40px}
+.win{background:#0F172A;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden}
+.bar{display:flex;align-items:center;gap:9px;padding:14px 18px;background:#1E293B}
+.bar i{width:13px;height:13px;border-radius:50%;background:#64748B}.bar i:nth-child(1){background:#F87171}.bar i:nth-child(2){background:#FBBF24}.bar i:nth-child(3){background:#4ADE80}
+.bar span{margin-left:14px;color:#94A3B8;font-size:16px;font-family:ui-monospace,monospace}
+pre{padding:22px 26px;font-family:"DejaVu Sans Mono",ui-monospace,monospace;font-size:17.5px;line-height:1.55;color:#E2E8F0;white-space:pre-wrap;word-break:break-word}
+.p{color:#6ACEE2}.c{color:#fff;font-weight:700}.w{color:#FBBF24;font-weight:700}.e{color:#F87171;font-weight:700}.g{color:#4ADE80}.h{color:#93C5FD;font-weight:700}
+'''))
+def _auto(img):
+    w, h, html = img
+    return (w, 300, html.replace(f"width:{w}px;height:{h}px", f"width:{w}px;height:auto"))
+IMAGES["demo-lint"] = _auto(terminal("li-lint: catching the AI tells", "lint", 900))
+IMAGES["demo-dryrun"] = _auto(terminal("li-post: a dry run shows exactly what would be sent", "dryrun", 760))
+IMAGES["demo-schedule"] = _auto(terminal("li-schedule: nothing publishes until you approve it", "schedule", 560))
+
+IMAGES["social"] = (1280, 640, page(1280, 640, '''
+<div class="bg"></div><div class="in"><div class="k">OFFICIAL LINKEDIN API  ·  CLAUDE SKILLS  ·  MIT</div>
+<div class="t title">LinkedIn Automation<br><span>for Claude</span></div>
+<div class="s">Write in your voice. Check. Approve. Publish. Measure.<br>No scraping. No stored passwords.</div></div>''', '''
+#canvas{background:#0B1B3F}.bg{position:absolute;inset:0;background:radial-gradient(700px 500px at 90% 10%,rgba(106,206,226,.4),transparent 60%),radial-gradient(700px 600px at 5% 100%,rgba(147,67,134,.6),transparent 60%),linear-gradient(135deg,#0B1B3F,#1D50B3)}
+.in{position:absolute;left:80px;top:90px;color:#fff}.k{font-size:20px;font-weight:700;letter-spacing:.14em;color:#BFE9F3;margin-bottom:24px}
+.t{font-size:96px;line-height:1.02;font-weight:900;letter-spacing:-.03em}.t span{background:linear-gradient(90deg,#6ACEE2,#E9A5DC);-webkit-background-clip:text;color:transparent}
+.s{margin-top:30px;font-size:28px;line-height:1.5;color:#DCE6FF}
+'''))
+
 def main():
     from playwright.sync_api import sync_playwright
     for name, (w, h, html) in IMAGES.items():
@@ -214,7 +261,7 @@ def main():
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--no-sandbox"])
         for name, (w, h, html) in IMAGES.items():
-            pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=1.5 if name != "icon" else 1)
+            pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=1.5 if name not in ("icon", "social") else 1)
             pg.goto((SRC / f"{name}.html").resolve().as_uri())
             pg.wait_for_timeout(900)
             pg.locator("#canvas").screenshot(path=str(HERE / f"{name}.png"))

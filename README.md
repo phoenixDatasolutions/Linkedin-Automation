@@ -16,7 +16,20 @@
   <img alt="Zero dependencies" src="https://img.shields.io/badge/dependencies-0-1D50B3">
   <img alt="Claude Code, Desktop and claude.ai" src="https://img.shields.io/badge/Claude-Code%20%C2%B7%20Desktop%20%C2%B7%20claude.ai-D97757">
   <img alt="Official LinkedIn API only" src="https://img.shields.io/badge/LinkedIn-official%20API%20only-0A66C2?logo=linkedin&logoColor=white">
+  <a href="https://github.com/phoenixDatasolutions/Linkedin-Automation/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/phoenixDatasolutions/Linkedin-Automation/actions/workflows/ci.yml/badge.svg"></a>
+  <img alt="Version 0.1.0" src="https://img.shields.io/badge/version-0.1.0-5585E3">
   <a href="https://github.com/phoenixDatasolutions/Linkedin-Automation/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/phoenixDatasolutions/Linkedin-Automation?style=social"></a>
+</p>
+
+<p align="center">
+  <a href="#quick-start-about-15-minutes">Quick start</a> ·
+  <a href="#how-to-get-your-linkedin-api-key">Get your API key</a> ·
+  <a href="#what-you-get">Skills</a> ·
+  <a href="#see-it-work">Demo</a> ·
+  <a href="#safe-by-default">Safety</a> ·
+  <a href="docs/SETUP.md">Full setup guide</a> ·
+  <a href="docs/FAQ.md">FAQ</a> ·
+  <a href="ROADMAP.md">Roadmap</a>
 </p>
 
 ---
@@ -117,6 +130,14 @@ Claude  $ li-post text --file post.txt --first-comment "..." --publish --yes
         Calls made today: 2 of 100.
 ```
 
+### The real output
+
+These are screenshots of the actual commands, not mock-ups.
+
+<p align="center"><img src="docs/images/demo-lint.png" alt="li-lint flags AI tells, engagement bait and too many hashtags; the clean post scores 100" width="100%"></p>
+<p align="center"><img src="docs/images/demo-dryrun.png" alt="li-post dry run shows the exact payload and sends nothing" width="100%"></p>
+<p align="center"><img src="docs/images/demo-schedule.png" alt="li-schedule queues a post as a draft that cannot publish until approved" width="100%"></p>
+
 ## How it fits together
 
 <p align="center"><img src="docs/images/architecture.png" alt="Claude skills run five small commands which call the official LinkedIn API. Secrets stay on your computer." width="100%"></p>
@@ -185,7 +206,7 @@ More answers: [`docs/FAQ.md`](docs/FAQ.md) and the troubleshooting table in [`sk
 - All logic is covered by **unit tests with mocked HTTP** (run `python -m unittest discover -s tests`). They check request shapes against LinkedIn's documentation: headers, URN encoding, upload sequences, limits, approval gates and secret handling.
 - Live calls to LinkedIn depend on *your* app and account. Run a dry run first, then a single `--visibility CONNECTIONS` test post and delete it (`li-post delete <urn> --publish`).
 - The knowledge base is a snapshot of Microsoft Learn's LinkedIn documentation from **2026-10-29** (API version 202610). LinkedIn changes the API monthly; each guide names its source page so you can re-check.
-- Not built yet: video posts, Company Page analytics commands, webhook receiver. See [`CHANGELOG.md`](CHANGELOG.md).
+- Not built yet: video posts, Company Page analytics commands, webhook receiver. See the [`ROADMAP.md`](ROADMAP.md) and [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Credits
 

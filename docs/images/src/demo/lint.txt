@@ -1,0 +1,11 @@
+$ li-lint --file bad-post.txt
+Post check: 277 characters, 42 words, opening line 42 words, 6 hashtags, 1 links. Score 70/100
+  WARNING: The opening line is long (42 words, 277 characters). Readers decide in the first 2-3 lines; LinkedIn folds the post with 'see more' after roughly 140-210 characters. Make the first line a single clear promise.
+  WARNING: Reads like AI or a template: "cutting-edge", "game-changer", "i'm thrilled to announce", "let's dive in", "let's dive into", "leverage", "revolutionize", "unlock the power". Say it the way you would say it to a colleague.
+  WARNING: Engagement bait (asking for comments, tags, likes or reposts) tends to feel spammy to readers and rarely brings the people you want.
+  WARNING: 6 hashtags. Keep to 5 or fewer, placed at the end.
+  WARNING: A link in the post body. Many writers put the link in the first comment instead (LinkedIn does not document a penalty; it is a widely used habit).
+
+$ li-lint --file good-post.txt
+Post check: 294 characters, 48 words, opening line 11 words, 3 hashtags, 0 links. Score 100/100
+  Clean. Nothing to fix.

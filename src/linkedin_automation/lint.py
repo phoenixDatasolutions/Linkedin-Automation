@@ -26,6 +26,13 @@ AI_TELLS = [
     "in conclusion", "in summary,", "ultimately,", "furthermore,", "moreover,", "seamlessly", "robust solution",
     "cutting-edge", "state-of-the-art", "a game of", "paradigm shift",
 ]
+# word families, so "unlocked", "leveraging" and "revolutionises" are caught too
+AI_STEMS = [
+    (r"\bdelv(e|es|ed|ing)\b", "delve"), (r"\bleverag(e|es|ed|ing)\b", "leverage"),
+    (r"\brevolutioni[sz](e|es|ed|ing)\b", "revolutionize"), (r"\bunlock(s|ed|ing)? (the )?(power|potential)\b", "unlock the power"),
+    (r"\bgame[- ]chang(er|ers|ing)\b", "game-changer"), (r"\belevat(e|es|ed|ing)\b", "elevate"),
+    (r"\bseamless(ly)?\b", "seamless"), (r"\bsynerg(y|ies|ize|ise)\b", "synergy"),
+]
 CLICHES = ["let that sink in", "read that again", "nobody is talking about", "here's what i learned", "hot take:", "unpopular opinion:"]
 BAIT = [
     r"comment\s+(yes|below|\"?\w+\"?\s+below)\b", r"like if you agree", r"tag (a|someone|your)", r"follow (me )?for more",
@@ -67,7 +74,9 @@ def check(text: str, max_hashtags: int = 5, extra_banned: List[str] = None) -> D
     if len(t) > 140 and first.strip().endswith(":") and hook_words < 4:
         notes.append("The opening line is only a lead-in. Make sure the line after it still earns the click.")
 
-    hits = sorted({p for p in AI_TELLS + (extra_banned or []) if p.lower() in low})
+    hits = {p for p in AI_TELLS + (extra_banned or []) if p.lower() in low}
+    hits |= {label for pat, label in AI_STEMS if re.search(pat, low)}
+    hits = sorted(hits)
     if hits:
         warnings.append("Reads like AI or a template: " + ", ".join(f'"{h}"' for h in hits[:8]) + ". Say it the way you would say it to a colleague.")
     cl = sorted({p for p in CLICHES if p in low})

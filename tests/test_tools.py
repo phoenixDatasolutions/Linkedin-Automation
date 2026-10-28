@@ -31,6 +31,12 @@ class Lint(unittest.TestCase):
         self.assertIn("AI or a template", text)
         self.assertIn("Engagement bait", text)
 
+    def test_word_variants_are_caught(self):
+        r = lint.check("We unlocked the power of data by leveraging a seamless, revolutionising platform.")
+        w = " ".join(r["warnings"])
+        for needle in ("unlock the power", "leverage", "revolutionize", "seamless"):
+            self.assertIn(needle, w)
+
     def test_hard_errors(self):
         self.assertTrue(lint.check("x" * 3001)["errors"])
         self.assertTrue(lint.check("Hello [Name], welcome")["errors"])

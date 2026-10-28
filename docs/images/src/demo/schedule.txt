@@ -1,0 +1,12 @@
+$ li-auth check
+MISSING  LINKEDIN_CLIENT_ID
+MISSING  LINKEDIN_CLIENT_SECRET
+none  saved login (/tmp/claude-1001/demo-home/token.json)
+      API version header: 202610
+      calls made today (UTC): 0 of 100 allowed per member
+
+$ li-schedule add good-post.txt --at "2026-11-03 09:30" --tz Europe/London
+Queued e78c5702 for 2026-11-03T09:30:00Z (UTC). Status: draft. It will NOT publish until you run: li-schedule approve e78c5702
+
+$ li-schedule list
+e78c5702  draft     2026-11-03T09:30:00Z  'Our month-end report took 9 hours. Now it takes 40 minutes.\n'

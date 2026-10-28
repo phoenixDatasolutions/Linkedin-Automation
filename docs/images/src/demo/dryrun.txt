@@ -1,0 +1,19 @@
+$ li-post text --file good-post.txt
+Post check: 294 characters, 48 words, opening line 11 words, 3 hashtags, 0 links. Score 100/100
+  Clean. Nothing to fix.
+
+--- This is what would be sent ---
+{
+  "author": "urn:li:person:DRY-RUN",
+  "commentary": "Our month-end report took 9 hours. Now it takes 40 minutes.\n\nThe change was boring: one clean data model, and every report reads from it.\nNobody copies numbers between files any more.\n\nIf your reports still start with \"which file is the latest?\", start there.\n\n#PowerBI #Analytics #DataModeling",
+  "visibility": "PUBLIC",
+  "distribution": {
+    "feedDistribution": "MAIN_FEED",
+    "targetEntities": [],
+    "thirdPartyDistributionChannels": []
+  },
+  "lifecycleState": "PUBLISHED",
+  "isReshareDisabledByAuthor": false
+}
+
+DRY RUN: nothing was sent. Add --publish to send it for real.
